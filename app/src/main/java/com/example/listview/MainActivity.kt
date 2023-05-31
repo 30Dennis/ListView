@@ -1,0 +1,25 @@
+package com.example.listview
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.Toast
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val Mylistview = findViewById<ListView>(R.id.Mylistview)
+        val Nchi = arrayOf("Kenya", "Tanzania", "Uganda", "Ethiopia", "Rwanda", "Burundi")
+        val arrayAdapter: ArrayAdapter<String> =
+            ArrayAdapter(this, android.R.layout.simple_list_item_1, Nchi)
+        Mylistview.adapter = arrayAdapter
+
+
+        Mylistview.setOnItemClickListener { adapterView, view, position, id ->
+            Toast.makeText(this, "You have clicked on" + Nchi[position], Toast.LENGTH_LONG).show()
+        }
+    }
+}
